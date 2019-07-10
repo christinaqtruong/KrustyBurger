@@ -32,7 +32,7 @@ connection.connect(function(err){
 });
 
 app.get("/", function(req, res){
-    connection.query('SELECT FROM menu', function(err, data){
+    connection.query('SELECT * FROM menu', function(err, data){
         if(err){
             throw err;
         }
