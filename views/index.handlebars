@@ -13,4 +13,43 @@
                 event on your game card, and if America wins a gold medal, YOU win a free Krusty Burger!</p>
 
         </div>
+
+        <button class="submit-btn">Build a burger</button>
+        <button class="submit-btn">Eat this burger</button>
+
     </div>
+</div>
+
+<ul>
+  {{#each menu}}
+    {{#if devoured}}
+    <li>
+  	  <p><span class="label">Menu</span> {{this.selection}}</p>
+  	</li>
+    {{/if}}
+  {{/each}}
+</ul>
+<br>
+<div height="500px" style="{background-color:red}"></div>
+<ul>
+  {{#each menu}}
+    {{#unless devoured}}
+    <li>
+  	  <p><span class="label">Menu</span> {{this.selection}}</p>
+      <button data-id="{{this.id}}" class="devour">Devour</button>
+  	</li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Add a burger</h2>
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="burger">Burger Name:</label>
+    <input type="text" id="newburger">
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
