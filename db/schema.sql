@@ -7,7 +7,7 @@ USE krustyburger_db;
 CREATE TABLE menu(
     id int NOT NULL AUTO_INCREMENT,
     selection varchar(500) NOT NULL,
-    devoured BOOLEAN,
+    devoured BOOLEAN DEFAULT false,
     PRIMARY KEY (id)
 );
 

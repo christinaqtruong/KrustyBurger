@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/menu", function(req, res) {
-  burger.insertOne(["selection"],[req.body.selection], function(result) {
+  burger.insertOne(["selection", 0],[req.body.selection, req.body.devoured], function(result) {
     res.json({ selection: result.insertSelection });
   });
 });
@@ -45,54 +45,4 @@ router.put("/api/menu/:selection", function(req, res) {
 
 // Export routes for server.js to use.
 module.exports = router;
-
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(function() {
-
-//   $(".create-form").on("submit", function(event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
-
-//     var newQuote = {
-//       author: $("#auth").val().trim(),
-//       quote: $("#quo").val().trim()
-//     };
-
-//     // Send the POST request.
-//     $.ajax("/api/quotes", {
-//       type: "POST",
-//       data: newQuote
-//     }).then(
-//       function() {
-//         console.log("created new quote");
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//     );
-//   });
-
-//   $(".devour").on("submit", function(event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
-
-//     var devoured = {
-//       devoured: true,
-//     };
-
-//     var id = $(this).data("id");
-
-//     // Send the POST request.
-//     $.ajax("/api/menu/", {
-//       type: "PUT",
-//       data: devoured
-//     }).then(
-//       function() {
-//         console.log("updated burger status");
-//         // Reload the page to get the updated list
-//         location.assign("/");
-//       }
-//     );
-//   });
-// });
-
 

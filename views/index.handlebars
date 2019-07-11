@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <label for="burger">Burger Name:</label>
-    <input type="text" id="newburger">
+    <input type="text" id="newSelection">
   </div>
 
   <button type="submit">Add Burger</button>
@@ -58,54 +58,3 @@
 <br>
 </div>
 
-<script>
-$(function() {
-
-  $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var newBurger = {
-      selection: $("#newBurger").val().trim(),
-      devoured: 0
-    };
-
-    // Send the POST request.
-    $.ajax("/api/quotes", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new menu selection");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $(".devour").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var devoured = {
-      devoured: true,
-    };
-
-    var id = $(this).data("id");
-
-    // Send the POST request.
-    $.ajax("/api/menu/", {
-      type: "PUT",
-      data: devoured
-    }).then(
-      function() {
-        console.log("updated burger status");
-        // Reload the page to get the updated list
-        location.assign("/");
-      }
-    );
-  });
-});
-
-
-</script>
