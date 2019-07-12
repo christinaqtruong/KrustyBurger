@@ -6,7 +6,9 @@ $(function() {
       var newDevouredState = {
         devoured: 1
       };
-  
+      
+      console.log("Clicked devour burger")
+
       // Send the PUT request.
       $.ajax("/api/menu/" + id, {
         type: "PUT",
@@ -23,7 +25,9 @@ $(function() {
     $(".burgerForm").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
+
+      console.log("Clicked add burger")
+      
       var newBurger = {
         selection: $("#newSelection").val().trim(),
         devoured: 0

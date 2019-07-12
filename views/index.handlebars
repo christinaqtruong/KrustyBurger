@@ -1,60 +1,74 @@
 <div class="image-cropper">
-    <img src="https://vignette.wikia.nocookie.net/simpsons-restaurants/images/5/5c/Krusty_Burger.png/revision/latest?cb=20131028010721"
-        alt="avatar" class="profile-pic">
+  <img
+    src="https://vignette.wikia.nocookie.net/simpsons-restaurants/images/5/5c/Krusty_Burger.png/revision/latest?cb=20131028010721"
+    alt="avatar" class="profile-pic">
 </div>
 
 <h1>Welcome!</h1>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm">
+  <div class="row">
+    <div class="col-sm">
 
-            <p>Be sure to participate in our Krusty Burger Olympic Sweepstakes! Just scratch off the name of the Olympic
-                event on your game card, and if America wins a gold medal, YOU win a free Krusty Burger!</p>
-
-        </div>
+      <p>Be sure to participate in our Krusty Burger Olympic Sweepstakes! Just scratch off the name of the Olympic
+        event on your game card, and if America wins a gold medal, YOU win a free Krusty Burger!</p>
 
     </div>
+
+  </div>
 </div>
 
 <div class="createburger">
-<h2>Add a burger</h2>
+  <h2>Add a Menu Item</h2>
 
-<form class="burgerForm">
+  <form class="burgerForm">
+    <div class="form-group">
+      <label for="burger">Selection Name:</label>
+      <input type="text" id="newSelection" name="name">
+    </div>
+    <div style="text-align:center;">
+    <button type="submit">Add Burger</button>
+    </div> 
+  </form>
+</div>
 
-  <div class="form-group">
-    <label for="burger">Burger Name:</label>
-    <input type="text" id="newSelection">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="noteaten">
+        <h4>Ready-to-Devour Items</h4>
+        <div height="500px"></div>
+        <ul>
+          {{#each menu}}
+          {{#unless devoured}}
+          <li>
+            <p><span class="label"></span> {{this.selection}}</p>
+            <button data-id="{{this.id}}" class="devour">Devour</button>
+          </li>
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
   </div>
-
-  <button type="submit">Add Burger</button>
-</form>
 </div>
 
-<div class="noteaten">
-<div height="500px"></div>
-<ul>
-  {{#each menu}}
-    {{#unless devoured}}
-    <li>
-  	  <p><span class="label"></span> {{this.selection}}</p>
-      <button data-id="{{this.id}}" class="devour">Devour</button>
-  	</li>
-    {{/unless}}
-  {{/each}}
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="eaten">
+        <h4>Devoured Items</h4>
+        <ul>
+          {{#each menu}}
+          {{#if devoured}}
+          <li>
+            <p><span class="label"></span> {{this.selection}}</p>
+          </li>
+          {{/if}}
+          {{/each}}
+        </ul>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="eaten">
-<ul>
-  {{#each menu}}
-    {{#if devoured}}
-    <li>
-  	  <p><span class="label"></span> {{this.selection}}</p>
-  	</li>
-    {{/if}}
-  {{/each}}
-</ul>
-<br>
-</div>
-
