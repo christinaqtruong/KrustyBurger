@@ -17,13 +17,13 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/menu", function(req, res) {
-  burger.insertOne(["selection", 0],[req.body.selection, req.body.devoured], function(result) {
+  burger.insertOne(["selection", "devoured"],[req.body.selection, req.body.devoured], function(result) {
     res.json({ selection: result.insertSelection });
   });
 });
 
 router.put("/api/menu/:selection", function(req, res) {
-  var condition = "selection = " + req.params.selection;
+  var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 

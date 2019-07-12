@@ -27,11 +27,11 @@
       <input type="text" id="newSelection" name="name">
     </div>
     <div style="text-align:center;">
-      <button type="submit">Add Burger</button>
+      <button id="addBurger">Add Burger</button>
     </div>
   </form>
 </div>
-
+<br>
 <div class="container">
   <div class="row">
     <div class="col-6">
@@ -41,7 +41,7 @@
         {{#unless devoured}}
         <li>
           <p><span class="label"></span> {{this.selection}}</p>
-          <button data-id="{{this.id}}" class="devour">Devour</button>
+          <button data-id="{{this.id}}" class="devour" data-newDevour="{{devoured}}">Devour</button>
         </li>
         {{/unless}}
         {{/each}}

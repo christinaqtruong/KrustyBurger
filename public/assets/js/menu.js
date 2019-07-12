@@ -2,9 +2,9 @@
 $(function() {
     $(".devour").on("click", function(event) {
       var id = $(this).data("id");
-  
+      var newDevour = $(this).data("newDevour")
       var newDevouredState = {
-        devoured: 1
+        devoured: newDevour
       };
       
       console.log("Clicked devour burger")
@@ -15,14 +15,14 @@ $(function() {
         data: newDevouredState
       }).then(
         function() {
-          console.log("changed devoured to true");
+          console.log("changed devoured to", newDevour);
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   
-    $(".burgerForm").on("submit", function(event) {
+    $("#addBurger").on("click", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
 
@@ -32,7 +32,9 @@ $(function() {
         selection: $("#newSelection").val().trim(),
         devoured: 0
       };
-  
+      
+      console.log(newBurger);
+      
       // Send the POST request.
       $.ajax("/api/menu", {
         type: "POST",
